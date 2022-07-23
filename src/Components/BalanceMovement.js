@@ -35,7 +35,7 @@ function BalanceMovement(props) {
 
   return (
     <div>
-      <span>{ balance ? <span>Saldo em conta: {balance.toFixed(2)}</span> : balance}</span>
+      <span>{ balance ? <span>Saldo em conta: {balance.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span> : balance}</span>
       <br />
       <br />
       <input type="button" name="deposit" value="Depósito" onClick={handleClickMethodPayment} />

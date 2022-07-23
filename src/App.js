@@ -5,7 +5,8 @@ import Login from './Pages/Login';
 import Provider from './Context/myProvider';
 import AssetsList from './Pages/AssetsList';
 import AccountMovement from './Pages/AccountMovement';
-import AssetNegotiation from './Pages/AssetNegotiation';
+import AssetsBuy from './Pages/AssetsBuy';
+import AssetsSell from './Pages/AssetsSell';
 import GlobalStyles from './assets/styles/global'
 import defaultTheme from './assets/styles/themes/default'
 
@@ -16,7 +17,8 @@ function App() {
           <Switch>
             <Route exact path="/" render={(props) => <Login {...props} />} />
             <Route exact path="/assets" render={(props) => <AssetsList {...props} />} />
-            <Route exact path="/assets/:id" render={(props) => <AssetNegotiation {...props} />} />
+            <Route exact path="/assets/buy/:id" render={(props) => <AssetsBuy {...props} />} />
+            <Route exact path="/assets/sell/:id" render={(props) => <AssetsSell {...props} />} />
             <Route exact path="/account" render={(props) => <AccountMovement {...props} />} />
           </Switch>
           <GlobalStyles />

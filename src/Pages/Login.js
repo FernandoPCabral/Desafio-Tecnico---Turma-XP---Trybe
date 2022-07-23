@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import getEmailLocalStorage from '../helpers/getEmailLocalStorage';
 import myContext from '../Context/myContext'
 import * as S from './styles'
+import AssetsExample from '../test'
 
 function Login(props) {
   const { history } = props
@@ -35,6 +36,8 @@ function Login(props) {
   const handleClick = async () => {
     localStorage.setItem('User', JSON.stringify(userEmail));
     localStorage.setItem('Date', JSON.stringify(Date()));
+    localStorage.setItem('AvailableAssets', JSON.stringify(AssetsExample));
+    localStorage.setItem('Balance', JSON.stringify(0));
     history.push('/assets');
   };
 

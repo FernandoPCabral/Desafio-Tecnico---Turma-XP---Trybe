@@ -7,7 +7,7 @@ function Provider({ children }) {
   const [userPassword, setUserPassword] = useState('');
   const [disabledButton, setDisabledButton] = useState(true);
   const [balance, setBalance] = useState(0);
-  const [accountValue, setAccountValue] = useState(0);
+  const [accountValue, setAccountValue] = useState();
   const [methodPayment, setMethodPayment] = useState('');
   const [assetChosen, setAssetChosen] = useState([])
   const [assetsBought, setAssetsBought] = useState([])

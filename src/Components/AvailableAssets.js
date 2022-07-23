@@ -8,7 +8,7 @@ function AvailableAssets(props) {
     const { history } = props
     setAssetChosen(asset);
     localStorage.setItem('AssetChosen', JSON.stringify(asset));
-    history.push(`/assets/${asset.id}`)
+    history.push(`/assets/buy/${asset.id}`)
   }
 
   useEffect(() => {
