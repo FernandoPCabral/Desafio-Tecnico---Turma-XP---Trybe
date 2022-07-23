@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components'
+import Login from './Pages/Login';
+import Provider from './Context/myProvider';
+import AssetsList from './Pages/AssetsList';
+import AccountMovement from './Pages/AccountMovement';
+import AssetNegotiation from './Pages/AssetNegotiation';
+import GlobalStyles from './assets/styles/global'
+import defaultTheme from './assets/styles/themes/default'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+      <ThemeProvider theme={defaultTheme}>
+        <Provider>
+          <Switch>
+            <Route exact path="/" render={(props) => <Login {...props} />} />
+            <Route exact path="/assets" render={(props) => <AssetsList {...props} />} />
+            <Route exact path="/assets/:id" render={(props) => <AssetNegotiation {...props} />} />
+            <Route exact path="/account" render={(props) => <AccountMovement {...props} />} />
+          </Switch>
+          <GlobalStyles />
+        </Provider>
+      </ThemeProvider>
+    );
 }
 
 export default App;
