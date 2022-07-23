@@ -20,6 +20,10 @@ function BalanceMovement(props) {
       localStorage.setItem('Balance', JSON.stringify((+accountValue) + (+balance)));
     }
     else if (methodPayment === 'Retirada') {
+      if (balance - accountValue < 0 ) {
+        alert('Valor de retirada excede o atual saldo')
+        document.querySelector('#confirm-button').preventDefault();
+      }
       setBalance((+balance) - (+accountValue));
       localStorage.setItem('Balance', JSON.stringify((+balance) - (+accountValue)));
     }
@@ -56,7 +60,7 @@ function BalanceMovement(props) {
       <Link to='/assets'>
         <input type="button" name="back" value="Voltar" />
       </Link>
-      <input type="button" name="confirm" value="Confirmar" onClick={handleClickAccount} />
+      <input type="button" name="confirm" id="confirm-button" value="Confirmar" onClick={handleClickAccount} />
     </div>
   )
 }

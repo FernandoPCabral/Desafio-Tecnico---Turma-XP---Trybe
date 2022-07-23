@@ -34,6 +34,10 @@ function AssetsSell(props) {
   }; 
 
   const handleClickSell = () => {
+    if (assetChosen.quantity < assetQuantity) {
+      alert('Você não possui ações suficientes para realizar esta transação')
+      document.querySelector('#confirm-button').preventDefault();
+    }
     setBalance(balance + (assetChosen.value * assetQuantity))
     localStorage.setItem('Balance', JSON.stringify((+balance) + (+assetChosen.value * (+assetQuantity))));
 
@@ -90,7 +94,7 @@ function AssetsSell(props) {
       <Link to='/assets'>
         <input type="button" name="back" value="Voltar" />
       </Link>
-      <input type="button" name="confirm" value="Confirmar" onClick={handleClickNegotiation}/>
+      <input type="button" name="confirm" id="confirm-button" value="Confirmar" onClick={handleClickNegotiation}/>
     </div>
   )
 }

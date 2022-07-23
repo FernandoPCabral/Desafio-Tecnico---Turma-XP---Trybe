@@ -45,9 +45,13 @@ function AssetsBuy(props) {
   };
 
   const handleClickBuy = () => {
+    if (assetQuantity > assetChosen.quantity) {
+      alert('Número de ações excedido!')
+      document.querySelector('#confirm-button').preventDefault();
+    }
     let assetsBought = JSON.parse(localStorage.getItem('AssetsBought'));
     assetsBought = handleNewBought(assetsBought, assetUpdatedBuy);
-    // verificar se o valor compravo não ultrapassa o valor de balance
+
     setBalance(balance - (assetChosen.value * assetQuantity));
     localStorage.setItem('Balance', JSON.stringify((+balance) - (+assetChosen.value * (+assetQuantity))));
 
@@ -69,6 +73,10 @@ function AssetsBuy(props) {
   }
 
   const handleClickNegotiation = () => {
+    console.log('aaaa', assetChosen.value)
+    console.log('bbbbb', assetQuantity)
+    console.log('ccc', balance)
+    console.log('dddd', assetChosen.value * assetQuantity)
     if (balance >= (assetChosen.value * assetQuantity)) {
       handleClickBuy()
     } else {

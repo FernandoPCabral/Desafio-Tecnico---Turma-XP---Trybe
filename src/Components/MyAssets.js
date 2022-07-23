@@ -2,13 +2,27 @@ import React, { useEffect, useContext } from 'react';
 import myContext from '../Context/myContext'
 
 function MyAssets(props) {
-  const { assetsBought, setAssetsBought, setAssetChosen } = useContext(myContext)
+  const { assetsBought, setAssetsBought, setAssetChosen, availableAssets } = useContext(myContext)
 
-  const handleClickPage = (asset) => {
+  const handleClickPageSell = (asset) => {
     const { history } = props
     setAssetChosen(asset);
     localStorage.setItem('AssetChosen', JSON.stringify(asset));
     history.push(`/assets/sell/${asset.id}`)
+  }
+
+  const handleClickPageBuy = (asset) => {
+    asset = availableAssets.find((item) => {
+      if (item.id === asset.id) {
+        return item
+      } else {
+        return asset
+      }
+    })
+    const { history } = props
+    setAssetChosen(asset);
+    localStorage.setItem('AssetChosen', JSON.stringify(asset));
+    history.push(`/assets/buy/${asset.id}`)
   }
 
   useEffect(() => {
@@ -34,8 +48,8 @@ function MyAssets(props) {
             <td>{asset.company}</td>
             <td>{asset.quantity}</td>
             <td>{asset.value}</td>
-            <td><button type="button" name="asset-sell" onClick={() => handleClickPage(asset)}>Vender</button></td>
-            {/* <td><button type="button" name="asset-buy" onClick={() => handleClickPage(asset)}>Comprar</button></td> */}
+            <td><button type="button" name="asset-sell" onClick={() => handleClickPageSell(asset)}>Vender</button></td>
+            <td><button type="button" name="asset-buy" onClick={() => handleClickPageBuy(asset)}>Comprar</button></td>
           </tr>
         ))}
       </tbody>
