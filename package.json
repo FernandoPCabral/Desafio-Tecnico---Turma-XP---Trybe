@@ -21,7 +21,7 @@
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://fernandopcabral.github.io/Desafio-Tecnico---Turma-XP---Trybe/",
+  "homepage": "https://fernandopcabral.github.io/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
