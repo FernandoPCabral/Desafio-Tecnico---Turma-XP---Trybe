@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+# Boas vindas ao repositório do Desafio Técnico Turma XP - Trybe!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este repositório contém o desenvolvimento do Desafio Técnico proposto pela [XP inc.](https://www.xpinc.com/) em parceria com a [Trybe](https://www.betrybe.com). O desafio foi realizado por _[Fernando Pereira Cabral](https://www.linkedin.com/in/fernandopcabral)_.
 
-## Available Scripts
+O desafio foi proposto na área de _FrontEnd_ e tinha como objetivo desenvolver uma aplicação que se assemelha ao dia a dia de uma pessoa investidora, um aplicativo de investimentos em ações, com algumas funcionalidades de conta digital.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+# Sumário
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Boas vindas ao repositório do Desafio Técnico Turma XP - Trybe!](#boas-vindas-ao-repositório-do-desafio-técnico-turma-xp-trybe)
+- [Sumário](#sumario)
+- [Habilidades](#habilidades)
+- [Sobre a Construção da Aplicação e Gerenciamento de Dados](#sobre-a-construção-da-aplicação-e-gerenciamento-de-dados)
+- [Sobre os Requisitos Mínimos: As telas da Aplicação](#sobre-os-requisitos-mínimos-as-telas-da-aplicação)
+   - [Tela de Login](#tela-de-login)
+   - [Tela de Ações](#tela-de-ações)
+   - [Tela de Compra/Venda de Ações](#tela-de-compra-venda-de-ações)
+   - [Tela da Conta Pessoal](#tela-da-conta-pessoal)
+- [Sobre os Requisitos Adicionais](#sobre-os-requisitos-adicionais)
+   - [Salvamento do Usuário, data e hora e exibição do Email](#salvamento-do-usuário-data-e-hora-e-exibição-do-email)
+   - [Validação de email e senha](#validação-de-email-e-senha)
+   - [Testes Unitários](#testes-unitários)
+   - [Tratamento de Erros](#tratamento-de-erros)
+- [Sobre a estilização da Aplicação com Styled Components](#sobre-a-estilização-da-aplicação-com-styled-components)
+- [Sobre o Deploy](#sobre-o-deploy)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Habilidades
 
-### `npm run build`
+Nesta aplicação, é verificada a capacidade de:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ * Utilizar os ciclos de vida de um componente _React_.
+ 
+ * Utilizar o gerencimento de estado, props e componentes atraves do _Context API_.
+ 
+ * Utilizar as funções _useState_, _useEffect_, _useContext_.
+ 
+ * utilizar o _Local Storage_ para salvamento e atualização das informações contidas nas Páginas da aplicação.
+ 
+ * Fazer verificações das informações enviadas em Formulário.
+ 
+ * Fazer Validações e Tratamentos de erros.
+ 
+ * Fazer a alimentação de forma dinamica das Tabelas através de _HOF's_.
+ 
+ * Criar links de navegação.
+ 
+ * Mapear o caminho da _URL_ através do atributo _History_ e da função _useParams_.
+ 
+ ---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Sobre a Construção da Aplicação e Gerenciamento de Dados
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para a construção da aplicação, foi utilizado o _React_ com destaque para o uso de _react-router-dom_ com gerenciamento de rotas utilizando o _Switch_ e _Route_, _PropTypes_ e _react-number-format_. Para o gerenciamento dos estados da aplicação foi utilizado o _Context API_ com destaque para o uso de um contexto único _"myContext"_ e _"myProvider"_ e gerenciamento de composição de páginas com o _useEffect_.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Sobre os Requisitos Mínimos: As telas da Aplicação
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Tela de Login
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+A tela de Login é composta apresentando o Nome Fantasia da aplicação: _PocketStock_ além de um formulário de preenchimento de E-mail e Senha, juntamente com um botão de acesso e link com redirecionamento.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Tela de Ações
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+A tela de Ações é formada pelo componente Header que traz as informações de saldo e E-mail logado além do nome fantasia. A tela também é formada por 2 componentes de tabelas que representam as Ações disponíveis para investimento e as Ações adquiridas pela pessoa usuária, ambas com botões de redirecionamento para a tela de compra e venda de Ações. Ao fim da tela, existe o botão de redirecionamento para a tela da conta pessoal.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Tela de Compra/Venda de Ações
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+A tela de Compra/Venda de ações é formada pelo Header já mencionado, um componente de tabela que tráz a informação de compra ou venda seguido do _id_ e os detalhes da ação, um componente de inserção da quantidade e dois botões sendo um com redirecionamento para a tela anterior (Tela de Ações) e outra para a confirmação da compra/venda.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Tela da Conta Pessoal
 
-### Making a Progressive Web App
+A tela da Conta Pessoal tráz o Header com uma pequena modificação, onde o saldo não aparece. Ao invés disso temos o saldo disposto na própria tela, em destaque, seguido pelos botões de seleção do método de transação: Depósito ou Retirada, o campo para a definição da quantia e dois botões de interação, sendo eles o botão de retorno para a tela anterior (Tela de Ações) e o botão para confirmar a transação.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+# Sobre os Requisitos Adicionais
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Salvamento do Usuário, data e hora e exibição do Email
 
-### Deployment
+O salvamento do E-mail do usuário e da data e hora são feitos através do Local Storage. Uma função é utilizada para recuperar o dado do E-mail e exibi-lo da tela.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## Validação de email e senha
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A validação do E-mail é feita atrvés de um _REGEX_ que verifica a existência do @ e da string ".com" além de pelo menos 1 caracter antes e depois do @, enquanto que a validação da senha é feita através da propriedade _Length_ onde a senha deve obrigatoriamente ter no mínimo 8 caractéres.
+
+---
+
+## Testes Unitários
+
+---
+
+## Tratamento de Erros
+
+Há Tratamento de erros na Tela de ações: com a verificação das quantias de cada ação, nas Telas de Compra/Venda de ações: com a verificação de compra ou venda da ação em relação a quantidade e também ao saldo da conta, e por fim, na Tela da Conta Pessoal: com a verificação do método de Transação e da quantia inserida em relação a este método e ao saldo da conta.
+
+---
+
+# Sobre a estilização da Aplicação com Styled Components
+
+Para a estilização e formatação do _CSS_ desta aplicação, foi utilizada a biblioteca _Styled Components_, que possibilita a escrita de códigos CSS dentro do _JavaScript_, além de possibilitar a utilização de um componente estilizado em mais de uma situação. A renomeação de Tag contribui muito neste processo, tornando o código mais limpo e entendível.
+
+---
+
+# Sobre o Deploy
+
+O deploy desta aplicação foi feito ... e a aplicação pode ser acessada através do Link ... 
+
