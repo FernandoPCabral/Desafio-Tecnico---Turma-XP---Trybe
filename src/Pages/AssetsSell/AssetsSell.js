@@ -36,6 +36,10 @@ function AssetsSell(props) {
   }; 
 
   const handleClickSell = () => {
+    if (assetQuantity.includes(',') || assetQuantity.includes('.')){
+      alert('São aceitas transações somente com quantias inteiras')
+      document.querySelector('#confirm-button').preventDefault();
+    }
     if (assetChosen.quantity < assetQuantity) {
       alert('Você não possui ações suficientes para realizar esta transação')
       document.querySelector('#confirm-button').preventDefault();
@@ -85,7 +89,7 @@ function AssetsSell(props) {
         </tbody>
       </Table>
       <S.ContainerSell>
-        <input type="text" name="sell-value" placeholder="Insira o Valor" onChange={handleChangeQuantity} />
+        <input type="text" name="sell-value" placeholder="Insira a Quantidade" onChange={handleChangeQuantity} />
         <div>
           <Link to='/assets'>
             <button type="button" name="back">Retornar</button>

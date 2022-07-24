@@ -47,6 +47,10 @@ function AssetsBuy(props) {
   };
 
   const handleClickBuy = () => {
+    if (assetQuantity.includes(',') || assetQuantity.includes('.')){
+      alert('São aceitas transações somente com quantias inteiras')
+      document.querySelector('#confirm-button').preventDefault();
+    }
     if (assetQuantity > assetChosen.quantity) {
       alert('Número de ações excedido!')
       document.querySelector('#confirm-button').preventDefault();
@@ -105,7 +109,7 @@ function AssetsBuy(props) {
         </tbody>
       </Table>
       <S.ContainerBuy>
-        <input type="text" name="buy-value" placeholder="Insira o Valor" onChange={handleChangeQuantity} />
+        <input type="number" name="buy-value" placeholder="Insira a Quantidade" onChange={handleChangeQuantity} />
         <div>
           <Link to='/assets'>
             <button type="button" name="back">Retornar</button>
