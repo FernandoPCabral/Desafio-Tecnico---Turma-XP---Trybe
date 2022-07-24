@@ -1,9 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import getEmailLocalStorage from '../helpers/getEmailLocalStorage';
-import myContext from '../Context/myContext'
+import getEmailLocalStorage from '../../helpers/getEmailLocalStorage';
+import myContext from '../../Context/myContext'
 import * as S from './styles'
-import AssetsExample from '../test'
+import AssetsExample from '../../test'
+import Logo from'../../assets/images/Logo.svg'
 
 function Login(props) {
   const { history } = props
@@ -44,36 +45,40 @@ function Login(props) {
     return (
       <S.Container>
         <S.Content>
-          <h2>Pocket Stock</h2>
-          <input
-            type="email"
-            name="email"
-            placeholder="Digite seu E-mail"
-            data-testid="input-email"
-            value={ userEmail }
-            onChange={ handleUserInfo }
-            autoFocus="on"
-            autoComplete="off"
-            />
-          <input
-            type="password"
-            name="password"
-            placeholder="Digite sua Senha"
-            data-testid="input-password"
-            value={ userPassword }
-            onChange={ handleUserInfo }
-            />
-          <S.Button
-            type="submit"
-            disabled={ disabledButton }
-            onClick={ handleClick }
-            >
-            Acessar
-          </S.Button>
-          <footer>
-            <span>Ultimo Login de Acesso: {getEmailLocalStorage()}</span>
-          </footer>
+          <h1>PocketStock</h1>
+          <form>
+            <input
+              type="email"
+              name="email"
+              placeholder="Digite seu E-mail"
+              data-testid="input-email"
+              value={ userEmail }
+              onChange={ handleUserInfo }
+              autoComplete="off"
+              />
+            <input
+              type="password"
+              name="password"
+              placeholder="Digite sua Senha"
+              data-testid="input-password"
+              value={ userPassword }
+              onChange={ handleUserInfo }
+              />
+            <S.Button
+              type="submit"
+              disabled={ disabledButton }
+              onClick={ handleClick }
+              >
+              Acessar
+            </S.Button>
+          </form>
+          <S.FootContent>
+            <span>Ultimo Login: {getEmailLocalStorage()}</span>
+          </S.FootContent>
         </S.Content>
+        <S.Aside>
+          <img src={Logo} alt="Pocket Stock Logo" />
+        </S.Aside>
       </S.Container>
     );
 }

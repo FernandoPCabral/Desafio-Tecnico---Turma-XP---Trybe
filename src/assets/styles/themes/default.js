@@ -1,10 +1,11 @@
 export default {
   colors: {
-    background: '#B8CDF8',
+    background: '#042A2B',
     primary: {
-      main: '#9D8DF1',
-      lighter: '#ffe2ed',
-      dark: '#b20425',
+      main: '#5EB1BF',
+      lighter: '#CEABB1',
+      dark: '#000000',
+      normal: '#89023E'
     },
   },
 };

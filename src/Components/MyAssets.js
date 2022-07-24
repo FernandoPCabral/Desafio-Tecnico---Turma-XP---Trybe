@@ -1,5 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import myContext from '../Context/myContext'
+import { TableMyAssets } from '../Components/shared/TableMyAssets'
+import { ButtonNegotiation } from '../Components/shared/ButtonNegotiation'
 
 function MyAssets(props) {
   const { assetsBought, setAssetsBought, setAssetChosen, availableAssets } = useContext(myContext)
@@ -30,7 +32,7 @@ function MyAssets(props) {
   }, [setAssetsBought])
 
   return(
-    <table>
+    <TableMyAssets>
       <caption>Minhas Ações</caption>
       <thead>
         <tr>
@@ -38,7 +40,7 @@ function MyAssets(props) {
           <th>Empresa</th>
           <th>Quantidade</th>
           <th>Valor em Reais</th>
-          <th>Negociar</th>
+          <th colspan="2">Negociar</th>
         </tr>
       </thead>
       <tbody>
@@ -48,12 +50,12 @@ function MyAssets(props) {
             <td>{asset.company}</td>
             <td>{asset.quantity}</td>
             <td>{asset.value}</td>
-            <td><button type="button" name="asset-sell" onClick={() => handleClickPageSell(asset)}>Vender</button></td>
-            <td><button type="button" name="asset-buy" onClick={() => handleClickPageBuy(asset)}>Comprar</button></td>
+            <td><ButtonNegotiation type="button" name="asset-sell" onClick={() => handleClickPageSell(asset)}>Vender</ButtonNegotiation></td>
+            <td><ButtonNegotiation type="button" name="asset-buy" onClick={() => handleClickPageBuy(asset)}>Comprar</ButtonNegotiation></td>
           </tr>
         ))}
       </tbody>
-    </table>
+    </TableMyAssets>
   )
 }
 

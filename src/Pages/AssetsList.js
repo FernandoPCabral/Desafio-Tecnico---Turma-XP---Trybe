@@ -4,6 +4,7 @@ import Header from '../Components/Header'
 import MyAssets from '../Components/MyAssets';
 import AvailableAssets from '../Components/AvailableAssets'
 import AssetsExample from '../test'
+import { ButtonAccount } from '../Components/shared/ButtonAccount';
 
 
 function AssetsList(props) {
@@ -17,15 +18,11 @@ function AssetsList(props) {
   return( 
     <div>
       <Header {...props} />
-      <br />
       <MyAssets {...props} />
-      <br />
       <AvailableAssets {...props} />
-      <br />
       <Link to='/account'>
-        <input type="button" name="negotiation" value="Depósito/Retirada" />
+        <ButtonAccount type="button" name="negotiation">Depósito/Retirada</ButtonAccount>
       </Link>
-      <br />
     </div>
   )
 }

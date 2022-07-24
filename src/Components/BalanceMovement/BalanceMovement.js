@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import myContext from '../Context/myContext'
+import myContext from '../../Context/myContext'
+import * as S from './styles'
 
 function BalanceMovement(props) {
   const { balance, setBalance, methodPayment, setMethodPayment, accountValue, setAccountValue } = useContext(myContext);
@@ -15,6 +16,9 @@ function BalanceMovement(props) {
   }
 
   const handleClickAccount = async () => {
+    if (!methodPayment) {
+      alert('É necessário escolher um método de Transação')
+    }
     if (methodPayment === 'Depósito') {
       setBalance((+accountValue) + (+balance));
       localStorage.setItem('Balance', JSON.stringify((+accountValue) + (+balance)));
@@ -32,21 +36,19 @@ function BalanceMovement(props) {
   useEffect(() => {
     const balanceLocalStorage = JSON.parse(localStorage.getItem('Balance'));
   if (!balanceLocalStorage) {
-    setBalance(0);
+    setBalance();
   }
   setBalance(balanceLocalStorage)
   })
 
   return (
-    <div>
-      <span>{ balance ? <span>Saldo em conta: {balance.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span> : balance}</span>
-      <br />
-      <br />
-      <input type="button" name="deposit" value="Depósito" onClick={handleClickMethodPayment} />
-      <input type="button" name="withdraw" value="Retirada" onClick={handleClickMethodPayment} />
-      <br />
-      <br />
-      <input
+    <S.Content>
+      { balance ? <span>Saldo em Conta: {balance.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span> : <span>Saldo em conta: {balance.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span> }
+      <S.ContainerOne>
+        <input type="button" name="deposit" value="Depósito" onClick={handleClickMethodPayment} />
+        <input type="button" name="withdraw" value="Retirada" onClick={handleClickMethodPayment} />
+      </S.ContainerOne>
+      <S.Input
         type="number"
         name="moneyInput"
         placeholder="Digite o Valor"
@@ -55,13 +57,13 @@ function BalanceMovement(props) {
         value={accountValue}
         onChange={handleChangeAccountValue}
       />
-      <br />
-      <br />
-      <Link to='/assets'>
-        <input type="button" name="back" value="Voltar" />
-      </Link>
-      <input type="button" name="confirm" id="confirm-button" value="Confirmar" onClick={handleClickAccount} />
-    </div>
+      <S.ContainerTwo>
+        <Link to='/assets'>
+          <button type="button" name="back">Retornar</button>
+        </Link>
+        <button type="button" name="confirm" id="confirm-button" onClick={handleClickAccount}>Confirmar</button>
+      </S.ContainerTwo>
+    </S.Content>
   )
 }
 

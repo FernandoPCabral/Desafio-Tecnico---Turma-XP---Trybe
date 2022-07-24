@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import Header from '../Components/Header';
-import myContext from '../Context/myContext'
+import Header from '../../Components/Header';
+import myContext from '../../Context/myContext'
+import { Table } from '../../Components/shared/Table'
+import * as S from './styles'
 
 function AssetsSell(props) {
   const { id } = useParams();
@@ -63,10 +65,7 @@ function AssetsSell(props) {
   return(
     <div>
       <Header {...props} />
-      <br />
-      <br />
-      <br />
-      <table>
+      <Table>
         <caption>Vender Ação: {id}</caption>
         <thead>
           <tr>
@@ -84,17 +83,16 @@ function AssetsSell(props) {
             <td>{assetChosen.value}</td>
           </tr>
         </tbody>
-      </table>
-      <br />
-      <br />
-      <button type="button" name="sell">Vender</button>
-      <input type="text" name="sell-value" placeholder="Insira o Valor" onChange={handleChangeQuantity} />
-      <br />
-      <br />
-      <Link to='/assets'>
-        <input type="button" name="back" value="Voltar" />
-      </Link>
-      <input type="button" name="confirm" id="confirm-button" value="Confirmar" onClick={handleClickNegotiation}/>
+      </Table>
+      <S.ContainerSell>
+        <input type="text" name="sell-value" placeholder="Insira o Valor" onChange={handleChangeQuantity} />
+        <div>
+          <Link to='/assets'>
+            <button type="button" name="back">Retornar</button>
+          </Link>
+          <button type="button" name="confirm" id="confirm-button" onClick={handleClickNegotiation}>Confirmar</button>
+        </div>
+      </S.ContainerSell>
     </div>
   )
 }

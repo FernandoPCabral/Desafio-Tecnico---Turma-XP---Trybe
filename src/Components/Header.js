@@ -1,6 +1,7 @@
 import React from 'react';
 import getEmailLocalStorage from '../helpers/getEmailLocalStorage';
 import getBalance from '../helpers/getBalance';
+import { HeaderStyle } from './shared/HeaderStyle'
 
 const Header = (props) => {
   const { history } = props
@@ -16,16 +17,17 @@ const Header = (props) => {
   }
 
     return (
-      <header>
+      <HeaderStyle>
         <div>
-          <span>Usuário: </span>
-          <span>{ getEmailLocalStorage() }</span>
-          <br />
           <span>{showBalance()}</span>
+          <span>PocketStock</span>
+          <div>
+            <span>Usuário: </span>
+            <span>{ getEmailLocalStorage() }</span>
+          </div>
         </div>
-      </header>
+      </HeaderStyle>
     )
 }
 
 export default Header;
-//var f2 = atual.toLocaleString('pt-br', {minimumFractionDigits: 2}).replace(".", ",");

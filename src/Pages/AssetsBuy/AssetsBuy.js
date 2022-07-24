@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import Header from '../Components/Header';
-import myContext from '../Context/myContext'
+import Header from '../../Components/Header';
+import myContext from '../../Context/myContext'
+import { Table } from '../../Components/shared/Table'
+import * as S from './styles'
 
 function AssetsBuy(props) {
   const { id } = useParams();
@@ -69,14 +71,10 @@ function AssetsBuy(props) {
 
   const balanceAlert = () => {
     alert('Você não possui saldo suficiente para esta transação. Por favor, volte a página da sua conta pessoal e realize um depósito')
-    document.querySelector('confirm-button').preventDefault();
+    document.querySelector('#confirm-button').preventDefault();
   }
 
   const handleClickNegotiation = () => {
-    console.log('aaaa', assetChosen.value)
-    console.log('bbbbb', assetQuantity)
-    console.log('ccc', balance)
-    console.log('dddd', assetChosen.value * assetQuantity)
     if (balance >= (assetChosen.value * assetQuantity)) {
       handleClickBuy()
     } else {
@@ -87,10 +85,7 @@ function AssetsBuy(props) {
   return(
     <div>
       <Header {...props} />
-      <br />
-      <br />
-      <br />
-      <table>
+      <Table>
         <caption>Comprar Ação: {id}</caption>
         <thead>
           <tr>
@@ -108,17 +103,16 @@ function AssetsBuy(props) {
             <td>{assetChosen.value}</td>
           </tr>
         </tbody>
-      </table>
-      <br />
-      <br />
-      <button type="button" name="buy">Comprar</button>
-      <input type="text" name="buy-value" placeholder="Insira o Valor" onChange={handleChangeQuantity} />
-      <br />
-      <br />
-      <Link to='/assets'>
-        <input type="button" name="back" value="Voltar" />
-      </Link>
-      <input type="button" id="confirm-button" name="confirm" value="Confirmar" onClick={handleClickNegotiation}/>
+      </Table>
+      <S.ContainerBuy>
+        <input type="text" name="buy-value" placeholder="Insira o Valor" onChange={handleChangeQuantity} />
+        <div>
+          <Link to='/assets'>
+            <button type="button" name="back">Retornar</button>
+          </Link>
+          <button type="button" id="confirm-button" name="confirm" onClick={handleClickNegotiation}>Confirmar</button>
+        </div>
+      </S.ContainerBuy>
     </div>
   )
 }
